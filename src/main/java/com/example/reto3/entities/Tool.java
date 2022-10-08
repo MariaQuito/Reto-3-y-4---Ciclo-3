@@ -30,7 +30,7 @@ public class Tool implements Serializable {
     @JsonIgnoreProperties({"tool","client"})
     private List<Message> messages;
 
-    @OneToMany(cascade ={CascadeType.PERSIST},mappedBy = "tool")
+    @OneToMany(cascade ={CascadeType.ALL},mappedBy = "tool")
     @JsonIgnoreProperties({"tool","messages"})
     private List<Reservation> reservations;
 
