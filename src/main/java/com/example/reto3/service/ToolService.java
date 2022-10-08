@@ -17,10 +17,10 @@ public class ToolService {
     public List<Tool> getAll(){return toolRepository.getAll();}
     public Optional<Tool> getTool(int id){return toolRepository.getTool(id);}
     public Tool save(Tool a){
-        if(a.getIdToll()==null){
+        if(a.getId()==null){
             return toolRepository.save(a);
         } else{
-            Optional<Tool> e = toolRepository.getTool(a.getIdToll());
+            Optional<Tool> e = toolRepository.getTool(a.getId());
             if (e.isPresent()){
                 return a;
             } else {
@@ -30,8 +30,8 @@ public class ToolService {
     }
 
     public Tool update(Tool a){
-        if(a.getIdToll()!= null){
-            Optional<Tool> q = toolRepository.getTool(a.getIdToll());
+        if(a.getId()!= null){
+            Optional<Tool> q = toolRepository.getTool(a.getId());
             if (q.isPresent()){
                 if (a.getDescription() != null){
                     q.get().setDescription(a.getDescription());

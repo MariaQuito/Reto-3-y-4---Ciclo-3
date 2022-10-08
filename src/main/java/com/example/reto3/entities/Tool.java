@@ -13,13 +13,13 @@ public class Tool implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idToll;
-
+    private Integer id;
+    private String name;
     private String brand;
     @Column(name = "year_b")
     private Integer year;
     private String description;
-    private String name;
+
 
     @ManyToOne
     @JoinColumn(name="category_id")
@@ -34,13 +34,12 @@ public class Tool implements Serializable {
     @JsonIgnoreProperties({"tool","messages"})
     private List<Reservation> reservations;
 
-
-    public Integer getIdToll() {
-        return idToll;
+    public Integer getId() {
+        return id;
     }
 
-    public void setIdToll(Integer idToll) {
-        this.idToll = idToll;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getBrand() {
