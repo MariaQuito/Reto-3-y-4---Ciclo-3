@@ -19,8 +19,8 @@ public class Reservation implements Serializable {
     private String status = "created";
 
     @ManyToOne
-    @JoinColumn(name = "reservationId")
-    @JsonIgnoreProperties({"reservations","client"})
+    @JoinColumn(name = "toolid")
+    @JsonIgnoreProperties({"reservations"})
     private Tool tool;
 
     @ManyToOne

@@ -3,6 +3,7 @@ package com.example.reto3.entities;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
+import javax.persistence.Id;
 import java.io.Serializable;
 import java.util.List;
 
@@ -12,10 +13,10 @@ public class Tool implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Integer idToll;
 
     private String brand;
-
+    @Column(name = "year_b")
     private Integer year;
     private String description;
     private String name;
@@ -30,16 +31,16 @@ public class Tool implements Serializable {
     private List<Message> messages;
 
     @OneToMany(cascade ={CascadeType.PERSIST},mappedBy = "tool")
-    @JsonIgnoreProperties("tool")
+    @JsonIgnoreProperties({"tool","messages"})
     private List<Reservation> reservations;
 
 
-    public Integer getId() {
-        return id;
+    public Integer getIdToll() {
+        return idToll;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setIdToll(Integer idToll) {
+        this.idToll = idToll;
     }
 
     public String getBrand() {
