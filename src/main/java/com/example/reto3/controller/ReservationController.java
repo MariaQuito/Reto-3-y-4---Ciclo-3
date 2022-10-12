@@ -1,6 +1,8 @@
 package com.example.reto3.controller;
 
+import com.example.reto3.entities.CountClient;
 import com.example.reto3.entities.Reservation;
+import com.example.reto3.entities.Status;
 import com.example.reto3.service.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -39,6 +41,20 @@ public class ReservationController {
         return reservationService.delete(id);
     }
 
+    @GetMapping("/report-clients")
+    public List<CountClient> getReservationsReportClient(){
 
+        return reservationService.getTopClients();
+    }
+
+    @GetMapping("/report-dates/{dateOne}/{dateTwo}")
+    public List<Reservation> getReservationsReportDates(@PathVariable("dateOne") String dateOne,@PathVariable("dateTwo") String dateTwo){
+        return reservationService.informePeriodoTiempoReservas(dateOne,dateTwo);
+    }
+
+    @GetMapping("/report-status")
+    public Status getReservationsStatusReport(){
+        return reservationService.getReservationStatusReport();
+    }
 
 }
